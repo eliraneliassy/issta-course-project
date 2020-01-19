@@ -3,13 +3,15 @@
   <div class="row shopping-cart">
       <app-item *ngFor="let item of shoppingCart" [item]="item" 
       (removeFromCart)="removeFromCart($event)" 
-      [existInCart]="true"></app-item>
+      [existInCart]="true"
+      appChangeColor='yellow'></app-item>
   </div>
 
 
   <div class="row">
     <app-item *ngFor="let item of items" [item]="item" (addToCart)="addToCart($event)"
     [existInCart]="existInCart(item)">
+    <div>hello</div>
     </app-item>
   </div>
 </div>

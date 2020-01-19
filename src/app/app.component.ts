@@ -1,18 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Item } from './item.interface';
 import { db } from './db';
+import { FeedService } from './feed.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
-  items: Item[] = db;
+  items: Item[] = [];
   shoppingCart: Item[] = [];
 
-  constructor() {
+  constructor(private feedService: FeedService) {
+  }
+
+  ngOnInit() {
+    this.feedService.getFeed().subscribe((items: Item[]) => this.items = items);
   }
 
   addToCart(item: Item) {

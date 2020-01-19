@@ -6,7 +6,8 @@
         <img [src]="item.imageUrl">
     </div>
     <div class="price">
-        {{item.price}} USD
+        <span> {{item.price | currency}}</span>
+        {{item.price | discount:0.1 | currency}}
     </div>
 
     <button class="btn btn-success" (click)="addToCartClicked()" *ngIf="!existInCart; else elseBlock">Add To
@@ -14,4 +15,6 @@
     <ng-template #elseBlock>
         <button class="btn btn-danger" (click)="removeFromCartClicked()">Remove From Cart</button>
     </ng-template>
+
+    <ng-content></ng-content>
 </div>
