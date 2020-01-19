@@ -1,0 +1,17 @@
+<div class="item">
+    <div class="title">
+        {{item.description}}
+    </div>
+    <div class="img">
+        <img [src]="item.imageUrl">
+    </div>
+    <div class="price">
+        {{item.price}} USD
+    </div>
+
+    <button class="btn btn-success" (click)="addToCartClicked()" *ngIf="!existInCart; else elseBlock">Add To
+        Cart</button>
+    <ng-template #elseBlock>
+        <button class="btn btn-danger" (click)="removeFromCartClicked()">Remove From Cart</button>
+    </ng-template>
+</div>

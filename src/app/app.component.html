@@ -1,11 +1,15 @@
-<div class="item">
-  <div class="title">
-    {{items[0].description}}
+<div class="container">
+
+  <div class="row shopping-cart">
+      <app-item *ngFor="let item of shoppingCart" [item]="item" 
+      (removeFromCart)="removeFromCart($event)" 
+      [existInCart]="true"></app-item>
   </div>
-  <div class="img">
-    <img [src]="items[0].imgUrl">
-  </div>
-  <div class="price">
-    {{items[0].price}} USD
+
+
+  <div class="row">
+    <app-item *ngFor="let item of items" [item]="item" (addToCart)="addToCart($event)"
+    [existInCart]="existInCart(item)">
+    </app-item>
   </div>
 </div>
