@@ -3,7 +3,7 @@
 
   
     <div class="row">
-      <app-item *ngFor="let item of items" [item]="item" (addToCart)="addToCart($event)"
+      <app-item *ngFor="let item of items$ | async" [item]="item" (addToCart)="addToCart($event)"
       (removeFromCart)="revmoveFromCart($event)"
       [existInCart]="existInCart(item)">
       <div>hello</div>
