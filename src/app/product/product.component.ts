@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Item } from '../item.interface';
 import { FeedService } from '../feed.service';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-product',
@@ -17,10 +18,16 @@ export class ProductComponent implements OnInit {
     private feedService: FeedService) { }
 
   ngOnInit() {
-    // this.route.queryParams.subscribe((params: Params) => {
-    //   this.id = params.id;
-    //   console.log(this.id);
-    // });
+    this.route.queryParams
+      .pipe(
+        filter((params: Params) => params.id !== null)
+      )
+      .subscribe((params: Params) => {
+        if (params.id) {
+          this.id = params.id;
+          console.log(this.id);
+        }
+      });
 
     this.route.params.subscribe((params: Params) => {
       this.id = params.id;

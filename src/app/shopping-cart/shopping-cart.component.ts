@@ -14,7 +14,7 @@ export class ShoppingCartComponent implements OnInit {
   constructor(private cartService: CartService) { }
 
   ngOnInit() {
-    this.cart = this.cartService.shoppingCart;
+    this.cartService.getCart().subscribe(cart => this.cart = cart);
   }
 
   removeFromCart(item: Item) {
