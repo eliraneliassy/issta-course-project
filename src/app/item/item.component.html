@@ -1,4 +1,4 @@
-<div class="item">
+<div class="item" [routerLink]="['/product', item._id]" *ngIf="item">
     <div class="title">
         {{item.description}}
     </div>

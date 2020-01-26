@@ -1,5 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter, AfterViewInit, AfterViewChecked, AfterContentInit, AfterContentChecked, DoCheck, OnDestroy, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component, OnInit, Input, Output,
+  EventEmitter, AfterViewInit, AfterViewChecked,
+  AfterContentInit, AfterContentChecked, DoCheck, OnDestroy, OnChanges, SimpleChanges
+} from '@angular/core';
 import { Item } from '../item.interface';
+import { Router } from '@angular/router';
 
 // tslint:disable-next-line: no-conflicting-lifecycle
 @Component({
@@ -13,6 +18,10 @@ export class ItemComponent {
   @Output() addToCart: EventEmitter<Item> = new EventEmitter<Item>();
   @Output() removeFromCart: EventEmitter<Item> = new EventEmitter<Item>();
   @Input() existInCart: boolean;
+
+  constructor(private router: Router) {
+
+  }
 
   // constructor() {
   //   console.log('ctor');
@@ -50,6 +59,11 @@ export class ItemComponent {
 
   removeFromCartClicked() {
     this.removeFromCart.emit(this.item);
+  }
+
+  goToProduct() {
+    // this.router.navigateByUrl(`/product?id=${this.item._id}`});
+    this.router.navigate(['product'], {queryParams: {id: this.item._id}});
   }
 
 }

@@ -1,0 +1,6 @@
+<div class="row shopping-cart">
+    <app-item *ngFor="let item of cart" [item]="item" 
+    (removeFromCart)="removeFromCart($event)" 
+    [existInCart]="true"
+    appChangeColor='yellow'></app-item>
+</div>
