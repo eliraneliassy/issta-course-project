@@ -1,29 +1,26 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { FeedComponent } from './feed/feed.component';
-import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
-import { ProductComponent } from './product/product.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
-  { path: 'feed', component: FeedComponent },
-  { path: 'cart', component: ShoppingCartComponent },
-  { path: 'product', component: ProductComponent },
-  { path: 'product/:id', component: ProductComponent },
+  { path: '', redirectTo: 'auth', pathMatch: 'full' },
+
   {
-    path: 'auth', children: [
-      { path: 'login', component: LoginComponent },
-      { path: 'register', component: RegisterComponent }
-    ]
+    path: 'feed', loadChildren: () => import('./feed/feed.module').then(m => m.FeedModule)
+  },
+
+  {
+    path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)
   }
 
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

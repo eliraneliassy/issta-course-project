@@ -24,7 +24,7 @@ export class AuthService {
     this.router.navigateByUrl('/feed');
   }
 
-  logout(){
+  logout() {
     this.setUser(null);
   }
 }

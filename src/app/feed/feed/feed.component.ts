@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { Item } from '../item.interface';
-import { FeedService } from '../feed.service';
-import { CartService } from '../cart.service';
+import { Item } from '../../item.interface';
+import { FeedService } from '../../feed.service';
+import { CartService } from '../../cart.service';
 import { interval, Subscription, Observable } from 'rxjs';
 
 @Component({
@@ -11,7 +11,7 @@ import { interval, Subscription, Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FeedComponent implements OnInit, OnDestroy {
-  
+
 
   items$: Observable<Item[]>;
 
@@ -41,7 +41,7 @@ export class FeedComponent implements OnInit, OnDestroy {
     return this.cartService.existInCart(item);
   }
   ngOnDestroy(): void {
-     // this.sub.unsubscribe();
+    // this.sub.unsubscribe();
   }
 
 

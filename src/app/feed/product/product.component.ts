@@ -1,10 +1,10 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Item } from '../item.interface';
-import { FeedService } from '../feed.service';
+import { Item } from '../../item.interface';
+import { FeedService } from '../../feed.service';
 import { filter, switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { CartService } from '../cart.service';
+import { CartService } from '../../cart.service';
 
 @Component({
   selector: 'app-product',

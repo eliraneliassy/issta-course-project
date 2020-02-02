@@ -3,8 +3,9 @@ import {
   EventEmitter, AfterViewInit, AfterViewChecked,
   AfterContentInit, AfterContentChecked, DoCheck, OnDestroy, OnChanges, SimpleChanges, ChangeDetectionStrategy
 } from '@angular/core';
-import { Item } from '../item.interface';
+
 import { Router } from '@angular/router';
+import { Item } from './../../item.interface';
 
 // tslint:disable-next-line: no-conflicting-lifecycle
 @Component({

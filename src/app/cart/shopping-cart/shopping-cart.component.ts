@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Item } from '../item.interface';
-import { CartService } from '../cart.service';
+import { Item } from '../../item.interface';
+import { CartService } from '../../cart.service';
 import { Observable } from 'rxjs';
 
 @Component({
