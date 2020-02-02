@@ -1,7 +1,7 @@
 import {
   Component, OnInit, Input, Output,
   EventEmitter, AfterViewInit, AfterViewChecked,
-  AfterContentInit, AfterContentChecked, DoCheck, OnDestroy, OnChanges, SimpleChanges
+  AfterContentInit, AfterContentChecked, DoCheck, OnDestroy, OnChanges, SimpleChanges, ChangeDetectionStrategy
 } from '@angular/core';
 import { Item } from '../item.interface';
 import { Router } from '@angular/router';
@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-item',
   templateUrl: './item.component.html',
-  styleUrls: ['./item.component.scss']
+  styleUrls: ['./item.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ItemComponent {
 
