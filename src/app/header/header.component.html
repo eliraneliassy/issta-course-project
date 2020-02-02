@@ -1,4 +1,8 @@
+
 <a routerLink="/feed">Feed</a>
 <a routerLink="/cart">Shopping Cart</a>
 
 <button class="btn" (click)="emptyCart()">Empty Cart</button>
+<div *ngIf="user$ | async as user">
+    Hello {{user}}
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, PatternValidator, ValidationErrors } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      name: new FormControl(null, [Validators.required]),
+      name: new FormControl(null, Validators.required),
       email: new FormControl(null, [Validators.email, Validators.required]),
       password: new FormControl(null, [Validators.required,
       Validators.pattern('^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{4,}$')]),

@@ -1,5 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { CartService } from '../cart.service';
+import { AuthService } from '../auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -9,9 +11,14 @@ import { CartService } from '../cart.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private cartService: CartService) { }
+  user$: Observable<string>;
+
+  constructor(
+    private cartService: CartService,
+    private authService: AuthService) { }
 
   ngOnInit() {
+    this.user$ = this.authService.getUser();
   }
 
   emptyCart() {
